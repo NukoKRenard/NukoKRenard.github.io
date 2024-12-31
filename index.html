@@ -4,9 +4,75 @@
         <link rel="icon" href="NukoRenard.png">
         <title>Skyler O'Bonsawin</title>
         <link rel="stylesheet" href="index.css"></link>
-        <script src="home.js"></script>
+        <script src="scripts/shader.js" defer></script>
+        <script src="scripts/assetloader.js" defer></script>
+        <script src="scripts/hints.js" defer></script>
+        <script src="scripts/func.js" defer></script>
     </head>
-    <body id="homescreen">
-        
+    <body>
+        <div class="navbar">
+            <ul>
+                <li onclick="document.location.href='#works'">Works</li>
+                <li onclick="document.location.href='#awards'">Achievements</li>
+                <li onclick="document.location.href='#experience'">Experience</li>
+                <li onclick="document.location.href='#organisations'">Organisations</li>
+            </ul>
+            <div class="nameandpic">
+                <h1>Skyler O'Bonsawin</h1>
+            </div>
+        </div>
+        <header id="shaderbackground">
+            <img src="assets/images/NukoRenard.png">
+            <h1>Skyler O'Bonsawin</h1>
+            <div class="downarrow" id="headerscrollarrow"></div>
+        </header>
+        <div class="aboutme">
+            <h1>About me:</h1>
+            <p>
+                I am a senior year High School student at 
+                <a href="https://schoolweb.tdsb.on.ca/cedarbraeci">Cedarbrae Colligate Institute</a>
+                , hoping to build a career and a game
+                studio. I have experience with programming, and illustration, and specialise
+                in graphics programming and GPU work. I hope that my creations will bring
+                meaning to those who use them. I am also a 6 year Air Cadet who is a member of the
+                Advanced Leadership Program. I have experience being a teacher and mentor, and an able
+                to supervise and lead a team.
+            </p>
+        </div>
+        <div class="myworks"id="works">
+            <h1>Some of my works:</h1>
+            <ul id="workslist">
+                <li>
+                    <img src="assets/images/tx01alienworld.png">
+                </li>
+                <li>
+                    <img src="assets/images/tx01alienworld.png">
+                </li>
+                <li>
+                    <img src="assets/images/tx01alienworld.png">
+                </li>
+                </ul>
+            <div class="leftbutton"></div>
+            <div class="rightbutton"></div>
+            </div>
+        <div class="awards" id="awards">
+            <h1>Awards:</h1>
+            <ul>
+                <li>Most improved instructor (Air Cadets) 2024</li>
+                <li>Honors grade 9, 10, and 11</li>
+                <li>Highest achievement award, Grade 10 introduction to computer science</li>
+            </ul>
+        </div>
+        <div class="experience" id="experience">
+            <h1>My skills and experience:</h1>
+            <ul>
+                <li>Experience programming in python, java, c, c++, glsl, gles, javascript, html, css</li>
+                <li>Experience leading and mentoring team members</li>
+                <li>Experience organizing and staffing events</li>
+            </ul>
+        </div>
+        <div class="organization" id="organization">
+
+        </div>
     </body>
 </html>

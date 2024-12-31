@@ -24,12 +24,16 @@ precision mediump float;
 out vec4 fragColor;
 
 uniform float time;
+uniform vec2 screen;
 
 in vec2 coord;
 
 void main()
 {
-    fragColor = vec4(coord,1.0,1.0);
+    float whratio = (screen.x/screen.y);
+    vec3 pxp = vec3(coord.x*whratio,coord.y,0.0);
+
+    fragColor = vec4(coord,0.0,1.0);
 }
 `;
 
@@ -100,18 +104,19 @@ function onFrame()
 {
     renderCanvas.width = window.innerWidth;
     renderCanvas.height = window.innerHeight;
-    gl.viewport(0,0,renderCanvas.width,renderCanvas.height)
+    gl.viewport(0,0,window.innerWidth,window.innerHeight)
     gl.useProgram(shaderProgram)
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     gl.uniform1f(gl.getUniformLocation(shaderProgram,"time"),.3)
+    gl.uniform2f(gl.getUniformLocation(shaderProgram,"screen"),renderCanvas.width,renderCanvas.height);
 
     gl.bindBuffer(gl.ARRAY_BUFFER,vbo);
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo)
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo);
     gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_INT,null);
 
-    document.body.style.background = "url("+renderCanvas.toDataURL()+")"
+    document.getElementById("shaderbackground").style.background = "url("+renderCanvas.toDataURL()+")";
     window.requestAnimationFrame(onFrame);
 }
 
