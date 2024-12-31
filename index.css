@@ -65,6 +65,12 @@ body {
     border-left: 3px rgb(200,100,50) solid ;
 }
 
+#pagescrollprogress {
+    height:10px;
+    background: rgb(100,100,100);
+    width:1px;
+}
+
 header {
     background-size:cover;
     margin:none;
@@ -105,13 +111,67 @@ header > h1 {
     opacity:0%;
 }
 
-.leftbutton 
-{
-    width:100px;
-    height:100px;
-    background:rgb(100,100,100);
+.rightarrow {
+    width:50px;
+    height:50px;
+    transform:rotate(45deg) translate(-15%,15%);
+
+    margin:auto;
+
+    border-top: 10px solid rgb(200,200,200);
+    border-right: 10px solid rgb(200,200,200);
 }
 
+.leftarrow {
+    width:50px;
+    height:50px;
+    transform:rotate(45deg) translate(15%,-15%);
+
+    margin:auto;
+
+    border-bottom: 10px solid rgb(200,200,200);
+    border-left: 10px solid rgb(200,200,200);
+}
+
+.leftbutton, .rightbutton
+{
+    margin-inline:5%;
+    position: absolute;
+    width:120px;
+    height:120px;
+    font-size:50px;;
+    background:rgb(100,100,100);
+    text-align: center;
+    vertical-align: center;
+    color:rgb(255,255,255);
+
+    border:solid rgb(200,100,50) 5px;
+    border-radius: 50%;
+
+    transition-duration: 400ms;
+    z-index: 10;
+}
+
+.hintedbutton {
+    transform:scale(1.3,1.3);
+    background:rgb(255,255,255);
+
+    transition-duration: 1s;
+}
+
+.leftbutton:hover, .rightbutton:hover {
+    background-color: rgb(150,150,150);
+}
+
+.leftbutton
+{
+    left:0;
+}
+
+.rightbutton
+{
+    right:0;
+}
 
 .activehintarrow {
     transform:rotate(45deg) scale(1.5,1.5) translate(-.5cm,-.5cm);
@@ -151,14 +211,22 @@ a:visited
     border-bottom: solid orange 10px;
 }
 
-.myworks > ul {
+.myworks > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+}
+
+.myworks > div > ul {
     width:auto;
     overflow-y:hidden;
     overflow-x:scroll;
     white-space: nowrap;
+    width: 100%;
 }
 
-.myworks > ul > li {
+.myworks > div > ul > li {
     position: relative;
     display:inline-block;
 
@@ -167,28 +235,40 @@ a:visited
     border-radius: 50%;
 }
 
-.myworks > ul > li > img {
+.myworks > div > ul > li > video, img {
     height:500px;
     width:auto;
     border-radius:2%;
 }
 
 .imagedesc {
-    position:absolute;
+    position: absolute;
     background: rgba(50,50,50,.5);
 
     bottom:40px;
     padding:.5%;
     border-left: 3px solid white;
     left:60px;
+
+    width:400px;
+    height:200px;
+    padding:3%;
+    white-space: wrap;
+    overflow:hidden;
+
+    transition-duration: 300ms;
+
+    border-radius: 5%;
 }
 
-.myworks > ul > li > p {
-    color:rgb(255,255,255);
+.imagedesc > p
+{
+    width:15cm;
 }
 
-.myworks > ul > li > h1 {
-    color:rgb(145, 145, 145);
+.imagedesc:hover {
+    width:60%;
+    height:60%;
 }
 
 .hint {

@@ -1,4 +1,4 @@
 function scrollWorks(amount)
 {
-    document.getElementById("workslist").scroll(amount,0)
+    works = document.getElementById("workslist").scrollBy({top:0,left:amount,behavior:"smooth"})
 }

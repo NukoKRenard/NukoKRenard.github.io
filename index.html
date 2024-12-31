@@ -20,6 +20,7 @@
             <div class="nameandpic">
                 <h1>Skyler O'Bonsawin</h1>
             </div>
+            <div id="pagescrollprogress"></div>
         </div>
         <header id="shaderbackground">
             <img src="assets/images/NukoRenard.png">
@@ -41,19 +42,38 @@
         </div>
         <div class="myworks"id="works">
             <h1>Some of my works:</h1>
-            <ul id="workslist">
-                <li>
-                    <img src="assets/images/tx01alienworld.png">
-                </li>
-                <li>
-                    <img src="assets/images/tx01alienworld.png">
-                </li>
-                <li>
-                    <img src="assets/images/tx01alienworld.png">
-                </li>
-                </ul>
-            <div class="leftbutton"></div>
-            <div class="rightbutton"></div>
+                <div>
+                <button onclick="scrollWorks(-500)" id="worksbuttonl" class="leftbutton"><div class="leftarrow"></div></button>
+                <ul id="workslist">
+                    <li>
+                        <img src="assets/images/AvaxDesign.png">
+                        <div class="imagedesc">
+                            <h1>Avax Race</h1>
+                            <p>
+                                This is a race I made and plan to use in a future game. 
+                                Its a battle ready warrior like species with space faring technology.
+                                Their ships can be recognized by their flying wing shape, and their
+                                engine's scream.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="assets/images/tx01alienworld.png">
+                        <div class="imagedesc">
+                            <h1>Alien World</h1>
+                            <p>This is a scene of a little alien world I drew.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="assets/images/tx01alienworld.png">
+                        <div class="imagedesc">
+                            <h1>Alien World</h1>
+                            <p>This is a scene of a little alien world I drew.</p>
+                        </div>
+                    </li>
+                    </ul>
+                <button onclick="scrollWorks(500)"  id="worksbuttonr" class="rightbutton"><div class="rightarrow"></div></button>
+                </div>
             </div>
         <div class="awards" id="awards">
             <h1>Awards:</h1>
