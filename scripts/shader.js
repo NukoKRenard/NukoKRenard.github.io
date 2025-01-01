@@ -7,8 +7,11 @@ const shaderProgram = gl.createProgram()
 vbo = gl.createBuffer()
 ebo = gl.createBuffer()
 
+uniformAspectRatio = null;
+uniformTime = null;
+
 const vertexshadersrc = `#version 300 es
-precision mediump float;
+precision highp float;
 
 in vec4 aposition;
 
@@ -22,7 +25,7 @@ void main()
 `;
 
 const fragmentshadersrc = `#version 300 es
-precision mediump float;
+precision highp float;
 
 out vec4 fragColor;
 
@@ -36,7 +39,7 @@ void main()
     float whratio = (screen.x/screen.y);
     vec3 pxp = vec3(coord.x*whratio,coord.y,0.0);
 
-    fragColor = vec4(vec3(.3),1.0);
+    fragColor = vec4(vec3(1.0)*time,1.0);
 }
 `;
 
@@ -100,6 +103,9 @@ function onStart()
     gl.viewport(0,0,1080,720)
 
     gl.clearColor(1,0,1,1);
+
+    uniformAspectRatio = gl.getUniformLocation(shaderProgram,"screen");
+    uniformTime = gl.getUniformLocation(shaderProgram,"time");
         
     window.requestAnimationFrame(onFrame);
 }
@@ -109,9 +115,12 @@ function onFrame()
 {
     gl.useProgram(shaderProgram)
 
+    time = (Date.now()/1000);
+    console.log(time)
+
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    gl.uniform1f(gl.getUniformLocation(shaderProgram,"time"),Date.now());
-    gl.uniform2f(gl.getUniformLocation(shaderProgram,"screen"),renderCanvas.width,renderCanvas.height);
+    gl.uniform1f(uniformTime,.5);
+    gl.uniform2f(uniformAspectRatio,renderCanvas.width,renderCanvas.height);
 
     gl.bindBuffer(gl.ARRAY_BUFFER,vbo);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo);
