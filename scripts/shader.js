@@ -1,4 +1,7 @@
 const renderCanvas = document.createElement("canvas");
+renderCanvas.width = 1080;
+renderCanvas.height = 720;
+
 const gl = renderCanvas.getContext("webgl2");
 const shaderProgram = gl.createProgram()
 vbo = gl.createBuffer()
@@ -33,7 +36,7 @@ void main()
     float whratio = (screen.x/screen.y);
     vec3 pxp = vec3(coord.x*whratio,coord.y,0.0);
 
-    fragColor = vec4(coord,0.0,1.0);
+    fragColor = vec4(vec3(.3),1.0);
 }
 `;
 
@@ -94,6 +97,8 @@ function onStart()
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo)
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,new Int32Array(indexdata),gl.STATIC_DRAW)
 
+    gl.viewport(0,0,1080,720)
+
     gl.clearColor(1,0,1,1);
         
     window.requestAnimationFrame(onFrame);
@@ -102,21 +107,18 @@ function onStart()
 
 function onFrame()
 {
-    renderCanvas.width = window.innerWidth;
-    renderCanvas.height = window.innerHeight;
-    gl.viewport(0,0,window.innerWidth,window.innerHeight)
     gl.useProgram(shaderProgram)
 
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-
-    gl.uniform1f(gl.getUniformLocation(shaderProgram,"time"),.3)
+    gl.uniform1f(gl.getUniformLocation(shaderProgram,"time"),Date.now());
     gl.uniform2f(gl.getUniformLocation(shaderProgram,"screen"),renderCanvas.width,renderCanvas.height);
 
     gl.bindBuffer(gl.ARRAY_BUFFER,vbo);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER,ebo);
     gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_INT,null);
 
-    document.getElementById("shaderbackground").style.background = "url("+renderCanvas.toDataURL()+")";
+    document.getElementById("shaderbackground").style.background = "no-repeat url("+renderCanvas.toDataURL()+")";
+    document.getElementById("shaderbackground").style.backgroundSize = "cover";
     window.requestAnimationFrame(onFrame);
 }
 

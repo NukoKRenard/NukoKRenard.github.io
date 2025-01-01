@@ -1,9 +1,13 @@
+workshint = false;
+headerscrollhint = false;
+
 function headerScrollArrow()
 {
     var scrollnum = window.scrollY;
 
-    if (scrollnum < 200)
+    if (scrollnum < 200 && !headerscrollhint)
     {
+        headerscrollhint = true;
         document.getElementById("headerscrollarrow").classList.add("activehintarrow")
     }
 }
@@ -14,10 +18,12 @@ function portfolioScrollArrows()
 
     var scrollamt = document.getElementById("workslist").scrollLeft;
 
-    console.log(scrollamt);
+    console.log(scrollnum);
 
-    if (scrollnum > 1326 && scrollnum < 1938 && scrollamt < 10)
+    if (scrollnum > 1122 && scrollnum < 1836 && scrollamt < 10 && !workshint)
     {
+        workshint=true;
+
         document.getElementById("worksbuttonl").classList.add("hintedbutton");
         document.getElementById("worksbuttonr").classList.add("hintedbutton");
 
@@ -31,17 +37,14 @@ function portfolioScrollArrows()
 
 function loadHints()
 {
-    window.setTimeout(headerScrollArrow,10000);
-    window.setTimeout(portfolioScrollArrows,10000);
+    window.setTimeout(headerScrollArrow,5000);
+    window.setTimeout(portfolioScrollArrows,5000);
 }
 
 loadHints();
 
 document.addEventListener("scroll", () => 
 {
-    console.log(window.scrollY);
-
-    document.getElementById("pagescrollprogress").style.width = .5;
-
+    document.getElementById("pagescrollprogress").style.width = String((window.scrollY/(document.body.offsetHeight-window.innerHeight))*100)+"%";
     loadHints();
 });
