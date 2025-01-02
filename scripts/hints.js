@@ -1,5 +1,7 @@
 scrollhint = false;
 
+const verticalaspectratio = window.innerHeight < window.innerWidth
+
 window.setTimeout(() => {
     var scrollnum = window.scrollY;
 
@@ -29,7 +31,7 @@ document.addEventListener("scroll", () =>
     document.getElementById("pagescrollprogress").style.width = String((window.scrollY/(document.body.offsetHeight-window.innerHeight))*100)+"%";
 
     scrollamt = window.scrollY;
-    if (scrollamt > 500 && !aboutmehint)
+    if ((verticalaspectratio | scrollamt > 500) && !aboutmehint)
     {
         aboutmehint = true;
 
@@ -40,7 +42,7 @@ document.addEventListener("scroll", () =>
             document.getElementById("aboutmep").classList.remove("hiddenOpac");
         },500);
     }
-    if (scrollamt > 1000 && !portfoliohint)
+    if ((verticalaspectratio | scrollamt > 1000) && !portfoliohint)
     {
         portfoliohint = true;
 
@@ -68,6 +70,4 @@ document.addEventListener("scroll", () =>
             document.getElementById("worksbuttonr").classList.remove("hintedbutton");
         }, 6000)
     }
-
-    console.log(scrollamt)
 });

@@ -9,12 +9,11 @@
         <script src="scripts/func.js" defer></script>
     </head>
     <body>
-        <div class="navbar">
+        <div class="navbar hiddenTop" id="navbar">
             <ul>
                 <li onclick="document.location.href='#works'">Works</li>
                 <li onclick="document.location.href='#awards'">Achievements</li>
                 <li onclick="document.location.href='#experience'">Experience</li>
-                <li onclick="document.location.href='#organisations'">Organisations</li>
                 <li onclick="document.location.href='#contactinfo'">Contact information</li>
             </ul>
             <div class="nameandpic">
@@ -27,7 +26,7 @@
             <h1 id="headername" class="hiddenOpac">Skyler O'Bonsawin</h1>
             <div class="downarrow" id="headerscrollarrow"></div>
         </header>
-        <div class="aboutme">
+        <div class="aboutme" id="aboutme">
             <h1 class="hiddenOpac" id="aboutmeheader">About me:</h1>
             <p class="hiddenOpac" id="aboutmep">
                 I am a senior year High School student at 
@@ -40,7 +39,7 @@
                 to supervise and lead a team.
             </p>
         </div>
-        <div class="myworks"id="works">
+        <div class="myworks" id="works">
             <h1 id="workslisttitle" class="hiddenOpac">Some of my works:</h1>
                 <div id="worksdiv" class="hiddenOpac">
                 <button onclick="scrollWorks(-500)" id="worksbuttonl" class="leftbutton"><div class="leftarrow"></div></button>
@@ -127,6 +126,8 @@
                 <li>Most improved instructor (Air Cadets) 2024</li>
                 <li>Honors grade 9, 10, and 11</li>
                 <li>Highest achievement award, Grade 10 introduction to computer science</li>
+                <li>Air rifle level marksman</li>
+                <li>Flag party commander</li>
             </ul>
         </div>
         <div class="experience" id="experience">
@@ -135,10 +136,9 @@
                 <li>Experience programming in python, java, c, c++, glsl, gles, javascript, html, css</li>
                 <li>Experience leading and mentoring team members</li>
                 <li>Experience organizing and staffing events</li>
+                <li>Art and dezign experience</li>
+                <li>Some 3D modeling experience</li>
             </ul>
-        </div>
-        <div class="organization" id="organization">
-
         </div>
         <div class="contactinfo" id="contactinfo">
             <h1>Contact information:</h1>
