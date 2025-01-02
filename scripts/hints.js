@@ -1,6 +1,7 @@
 scrollhint = false;
 
-const verticalaspectratio = window.innerHeight < window.innerWidth
+const verticalaspectratio = window.innerHeight > window.innerWidth;
+console.log(verticalaspectratio)
 
 window.setTimeout(() => {
     var scrollnum = window.scrollY;
