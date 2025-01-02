@@ -27,12 +27,12 @@ window.setTimeout(() => {
 aboutmehint = false;
 portfoliohint = false;
 
-document.addEventListener("scroll", () => 
+function checkAnim()
 {
     document.getElementById("pagescrollprogress").style.width = String((window.scrollY/(document.body.offsetHeight-window.innerHeight))*100)+"%";
 
     scrollamt = window.scrollY;
-    if ((verticalaspectratio | scrollamt > 500) && !aboutmehint)
+    if ((verticalaspectratio || scrollamt > 500) && !aboutmehint)
     {
         aboutmehint = true;
 
@@ -43,7 +43,7 @@ document.addEventListener("scroll", () =>
             document.getElementById("aboutmep").classList.remove("hiddenOpac");
         },500);
     }
-    if ((verticalaspectratio | scrollamt > 1000) && !portfoliohint)
+    if ((verticalaspectratio || scrollamt > 1000) && !portfoliohint)
     {
         portfoliohint = true;
 
@@ -71,4 +71,7 @@ document.addEventListener("scroll", () =>
             document.getElementById("worksbuttonr").classList.remove("hintedbutton");
         }, 6000)
     }
-});
+}
+
+checkAnim();
+document.addEventListener("scroll", checkAnim);
