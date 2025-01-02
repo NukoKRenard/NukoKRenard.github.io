@@ -1,50 +1,73 @@
-workshint = false;
-headerscrollhint = false;
+scrollhint = false;
 
-function headerScrollArrow()
-{
+window.setTimeout(() => {
     var scrollnum = window.scrollY;
 
-    if (scrollnum < 200 && !headerscrollhint)
+    if (scrollnum < 200 && !scrollhint)
     {
-        headerscrollhint = true;
-        document.getElementById("headerscrollarrow").classList.add("activehintarrow")
+    scrollhint = true;
+    document.getElementById("headerscrollarrow").classList.add("activehintarrow")
     }
-}
+},10000)
 
-function portfolioScrollArrows()
-{
-    var scrollnum = window.scrollY;
+window.setTimeout(() => {
+    document.getElementById("headerprofileimage").classList.remove("hiddenOpac");
+},500);
+window.setTimeout(() => {
+    document.getElementById("headername").classList.remove("hiddenOpac");
+},1000);
+window.setTimeout(() => {
+    document.getElementById("navbar").classList.remove("hiddenTop");
+},3000);
 
-    var scrollamt = document.getElementById("workslist").scrollLeft;
 
-    console.log(scrollnum);
-
-    if (scrollnum > 1122 && scrollnum < 1836 && scrollamt < 10 && !workshint)
-    {
-        workshint=true;
-
-        document.getElementById("worksbuttonl").classList.add("hintedbutton");
-        document.getElementById("worksbuttonr").classList.add("hintedbutton");
-
-        window.setTimeout(() => {
-            document.getElementById("worksbuttonl").classList.remove("hintedbutton");
-            document.getElementById("worksbuttonr").classList.remove("hintedbutton");
-        }, 1000)
-    
-    }
-}
-
-function loadHints()
-{
-    window.setTimeout(headerScrollArrow,5000);
-    window.setTimeout(portfolioScrollArrows,5000);
-}
-
-loadHints();
+aboutmehint = false;
+portfoliohint = false;
 
 document.addEventListener("scroll", () => 
 {
     document.getElementById("pagescrollprogress").style.width = String((window.scrollY/(document.body.offsetHeight-window.innerHeight))*100)+"%";
-    loadHints();
+
+    scrollamt = window.scrollY;
+    if (scrollamt > 500 && !aboutmehint)
+    {
+        aboutmehint = true;
+
+        window.setTimeout(() => {
+            document.getElementById("aboutmeheader").classList.remove("hiddenOpac");
+        },300);
+        window.setTimeout(() => {
+            document.getElementById("aboutmep").classList.remove("hiddenOpac");
+        },500);
+    }
+    if (scrollamt > 1000 && !portfoliohint)
+    {
+        portfoliohint = true;
+
+        document.getElementById("workslisttitle").classList.remove("hiddenOpac");
+        window.setTimeout( () => {
+            document.getElementById("worksdiv").classList.remove("hiddenOpac");
+
+        },500)
+        timedelay = 1500;
+        for (const child of document.getElementById("workslist").children)
+        {
+            window.setTimeout(() => {
+                child.classList.remove("hiddenRight");
+            },timedelay);
+            timedelay += 500;
+        }
+
+        window.setTimeout(() => {
+            document.getElementById("worksbuttonl").classList.add("hintedbutton");
+            document.getElementById("worksbuttonr").classList.add("hintedbutton");
+        }, 5000)
+
+        window.setTimeout(() => {
+            document.getElementById("worksbuttonl").classList.remove("hintedbutton");
+            document.getElementById("worksbuttonr").classList.remove("hintedbutton");
+        }, 6000)
+    }
+
+    console.log(scrollamt)
 });
