@@ -1,3 +1,46 @@
+@keyframes wigglescale {
+    20%
+    {
+        transform: scale(100%);
+        background-color: white;
+    }
+    40%
+    {
+        transform: scale(125%) rotate(-20deg);
+        background-color: white;
+    }
+    60%
+    {
+        transform: scale(150%) rotate(30deg);
+        background-color: white;
+    }
+    80%
+    {
+        transform: scale(125%) rotate(-20deg);
+        background-color: white;
+    }
+    100% {}
+}
+@keyframes wiggle {
+    20%
+    {
+        transform: rotate(5deg);
+    }
+    40%
+    {
+        transform: rotate(-20deg);
+    }
+    60%
+    {
+        transform: rotate(30deg);
+    }
+    80%
+    {
+        transform: rotate(-20deg);
+    }
+    100% {}
+}
+
 body {
     background: rgb(20,20,20);
     color: rgb(200,200,200);
@@ -21,8 +64,6 @@ body {
     font-family: 'Courier New', Courier, monospace;
 
     overflow:hidden;
-
-    transition-duration: 1s;
 }
 
 .navbar > .nameandpic {
@@ -97,9 +138,13 @@ header > img {
     margin-left:auto;
     margin-right:auto;
     display:block;
+}
 
-    
-    transition-duration: 1s;
+.wiggle {
+    animation-name:wiggle;
+    animation-duration: 700ms;
+    animation-timing-function: cubic-bezier(.8,.8,1,1);
+    animation-fill-mode: forwards;
 }
 
 header > h1 {
@@ -107,8 +152,6 @@ header > h1 {
     font-size:600%;
     font-weight: bolder;
     color:rgba(255,255,255,.7);
-
-    transition-duration: 1s;
 }
 
 .downarrow {
@@ -123,6 +166,24 @@ header > h1 {
     opacity:0%;
 }
 
+.uparrow {
+    position: absolute;
+    width:30px;
+    height:30px;
+    transform:rotate(45deg);
+    top:50px;
+    right:50px;
+
+    border-top: 10px solid rgba(255,255,255,.4);
+    border-left: 10px solid rgba(255,255,255,.4);
+    margin-left:auto;
+    margin-right:auto;
+    transition-duration:500ms;
+}
+
+.imagedesc:hover > .uparrow {
+    opacity:0%;
+}
 .rightarrow {
     width:50px;
     height:50px;
@@ -165,8 +226,10 @@ header > h1 {
 }
 
 .hintedbutton {
-    transform:scale(1.5,1.5);
-    background:rgb(255,255,255);
+    animation-name:wigglescale;
+    animation-duration: 700ms;
+    animation-timing-function: cubic-bezier(.8,.8,1,1);
+    animation-fill-mode: forwards;
 }
 
 .leftbutton:hover, .rightbutton:hover {
@@ -208,12 +271,6 @@ a:visited
 
 .aboutme > h1 {
     text-align: center;
-
-    transition-duration: 1s;
-}
-
-.aboutme > p {
-    transition-duration: 1s;
 }
 
 .myworks {
@@ -233,8 +290,6 @@ a:visited
 
     font-size:500%;
     text-align: center;
-
-    transition-duration: 1s;
 }
 
 .myworks > div {
@@ -242,8 +297,6 @@ a:visited
     flex-direction: row;
     justify-content: center;
     align-items:center;
-
-    transition-duration: 1s;
 }
 
 .myworks > div > ul {
@@ -258,6 +311,7 @@ a:visited
     display:inline-block;
 
     height:500px;
+    max-height:500px;
     min-width: 500px;
 
     background:rgb(200,100,20);
@@ -269,8 +323,6 @@ a:visited
     border-radius:2%;
 
     filter: drop-shadow(-1cm 1cm 10px rgba(0,0,0,.3));
-
-    transition-duration: 1s;
 }
 
 .myworks > div > ul > li > video, img, embed {
@@ -297,16 +349,15 @@ a:visited
 
 .imagedesc {
     position: absolute;
-    background: rgba(50,50,50,.5);
+    background: rgb(50,50,50,.3);
 
-    bottom:0px;
+    bottom:1px;
     left:0px;
-    padding:.5%;
-    border-left: 3px solid white;
+    border-left: 5px solid white;
 
     width:450px;
-    height:200px;
-    padding:3%;
+    height:100px;
+    padding:10px;
     white-space: wrap;
     overflow:hidden;
 
@@ -321,15 +372,15 @@ a:visited
     width:90%;
 }
 
-.imagedesc:hover {
-    height:450px;
+.imagedesc > h1 {
+    margin-right: 50px;
+    display: inline-block;
 }
 
-.hint {
-    color: rgb(100,100,100);
-    transition-duration: 1s;
-    font-weight:bold;
-
+.imagedesc:hover {
+    height:450px;
+    background: rgb(50,50,50,.9);
+    filter:blur(0px);
 }
 
 .awards {
@@ -353,12 +404,18 @@ ul > li {
 
 .hiddenOpac {
     opacity:0%;
+    filter:blur(100px);
+    transition-duration: 1s;
+}
+.hiddenOpacIn {
+    opacity:100%;
+    filter:blur(0px);
 }
 
 .hiddenRight {
-    transform:translate(100cm,0);
+    transform:translate(500cm,0);
+    transition-duration: 1s;
 }
-
-.hiddenTop {
-    height:0;
+.hiddenRightIn {
+    transform:translate(0,0);
 }

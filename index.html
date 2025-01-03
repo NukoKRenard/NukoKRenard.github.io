@@ -4,11 +4,12 @@
         <link rel="icon" href="NukoRenard.png">
         <title>Skyler O'Bonsawin</title>
         <link rel="stylesheet" href="index.css"></link>
+        <script src="scripts/anim.js" defer></script>
         <script src="scripts/hints.js" defer></script>
         <script src="scripts/func.js" defer></script>
     </head>
     <body>
-        <div class="navbar hiddenTop" id="navbar">
+        <div class="navbar" id="navbar">
             <ul>
                 <li onclick="document.location.href='#works'">Works</li>
                 <li onclick="document.location.href='#awards'">Achievements</li>
@@ -45,7 +46,7 @@
                     <li class="hiddenRight">
                         <img src="assets/images/AvaxDesign.png">
                         <div class="imagedesc">
-                            <h1>Avax Race</h1>
+                            <h1>Avax Race</h1><div class="uparrow"></div>
                             <p>
                                 This is a race I made and plan to use in a future game. 
                                 Its a battle ready warrior like species with space faring technology.
@@ -57,14 +58,14 @@
                     <li class="hiddenRight">
                         <img src="assets/images/tx01alienworld.png">
                         <div class="imagedesc">
-                            <h1>Alien World</h1>
+                            <h1>Alien World</h1><div class="uparrow"></div>
                             <p>This is a scene of a little alien world I drew.</p>
                         </div>
                     </li>
                     <li class="hiddenRight">
                         <video autoplay muted loop controlls="false"><source src="assets/videos/FractalShader.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
-                            <h1>Fractal</h1>
+                            <h1>Fractal</h1><div class="uparrow"></div>
                             <p>
                                 This is a small fractal shader I made for phone backgrounds.
                                 It uses the Mandlebrot Set and some math to generate the colors.
@@ -74,7 +75,7 @@
                     <li class="hiddenRight">
                         <video autoplay muted loop controlls="false"><source src="assets/videos/RayMarchedBlobs.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
-                            <h1>Blobs</h1>
+                            <h1>Blobs</h1><div class="uparrow"></div>
                             <p>
                                 This is a shader that uses a rendering technique called raymarching
                                 as well as a softmin function to render some deforming blobs. Like the
@@ -86,7 +87,7 @@
                     <li class="hiddenRight">
                         <video autoplay muted loop controlls="false"><source src="assets/videos/SpaceGame.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
-                            <h1>Space Game</h1>
+                            <h1>Space Game</h1><div class="uparrow"></div>
                             <p>
                                 This is a game I made from scratch using pygame with python. All of the models, shaders, textures, sound, and effects
                                 (everything in the game) is authored by me. This was originally made for a school project, but I did far more than I had to
@@ -98,7 +99,7 @@
                     <li class="hiddenRight">
                         <img src="assets/images/RafflePoster.png">
                         <div class="imagedesc">
-                            <h1>Raffle Poster</h1>
+                            <h1>Raffle Poster</h1><div class="uparrow"></div>
                             <p>
                                 This poster was part of a series of posters that were requested to promote a charity event.
                             </p>
@@ -107,7 +108,7 @@
                     <li class="fullsizeworkbackground hiddenRight">
                         <iframe src="smallersite.html" height="1080" width="1920"></iframe>
                         <div class="imagedesc">
-                            <h1>This Website</h1>
+                            <h1>This Website</h1><div class="uparrow"></div>
                             <p>
                                 This website was programmed and made entirely by me using HTML, CSS, and JavaScript.
                                 This website as well as any picture, video, work, drawing on it were all created by me.                                
@@ -118,7 +119,7 @@
                 <button onclick="scrollWorks(500)"  id="worksbuttonr" class="rightbutton"><div class="rightarrow"></div></button>
                 </div>
             </div>
-        <div class="awards" id="awards">
+        <div class="awards hiddenOpac" id="awards">
             <h1>Awards:</h1>
             <ul>
                 <li>Most improved instructor (Air Cadets) 2024</li>
@@ -128,7 +129,7 @@
                 <li>Flag party commander</li>
             </ul>
         </div>
-        <div class="experience" id="experience">
+        <div class="experience hiddenOpac" id="experience">
             <h1>Skills and Experience:</h1>
             <ul>
                 <li>Experience programming in Python, Java, C, C++, GLSL, GLES, Javascript, HTML, CSS</li>
@@ -138,7 +139,7 @@
                 <li>Some 3D modeling experience</li>
             </ul>
         </div>
-        <div class="contactinfo" id="contactinfo">
+        <div class="contactinfo hiddenOpac" id="contactinfo">
             <h1>Contact Information:</h1>
         
             <h3>Phone Number: 437-446-1140</h3>
