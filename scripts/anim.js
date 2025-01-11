@@ -63,6 +63,10 @@ document.querySelectorAll("li.selfload").forEach((parent) => {
     {
         child = document.createElement("iframe");
         child.src = "index.html?loadselfembed=f";
+        childbackground = document.createElement("img");
+        childbackground.src = "assets/images/websiteheader.png";
+        childbackground.classList.add("blurredbackground");
+        parent.appendChild(childbackground);
     }
     child.height="1080"
     child.width="1920"
