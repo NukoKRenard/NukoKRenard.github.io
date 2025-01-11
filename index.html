@@ -11,6 +11,7 @@
     <body>
         <div class="navbar" id="navbar">
             <ul>
+                <li onclick="window.scrollTo(0,0);">Top</li>
                 <li onclick="document.location.href='#works'">Works</li>
                 <li onclick="document.location.href='#awards'">Achievements</li>
                 <li onclick="document.location.href='#experience'">Experience</li>
@@ -22,7 +23,7 @@
             <div id="pagescrollprogress"></div>
         </div>
         <header>
-            <img id="headerprofileimage" class="hiddenOpac" src="assets/images/NukoRenard.png">
+            <div class="glowbackground hiddenOpac"><img id="headerprofileimage" src="assets/images/NukoRenard.png"></div>
             <h1 id="headername" class="hiddenOpac">Skyler O'Bonsawin</h1>
             <div class="downarrow" id="headerscrollarrow"></div>
         </header>
@@ -91,7 +92,7 @@
                             <p>
                                 This is a game I made from scratch using pygame with python. All of the models, shaders, textures, sound, and effects
                                 (everything in the game) is authored by me. This was originally made for a school project, but I did far more than I had to
-                                learning OpenGL and 3D rendering in order to make it.
+                                learn OpenGL and 3D rendering in order to make it.
                             </p>
                         </div>
                         
@@ -105,8 +106,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="fullsizeworkbackground hiddenRight">
-                        <iframe src="smallersite.html" height="1080" width="1920"></iframe>
+                    <li class="fullsizeworkbackground hiddenRight selfload">
                         <div class="imagedesc">
                             <h1>This Website</h1><div class="uparrow"></div>
                             <p>

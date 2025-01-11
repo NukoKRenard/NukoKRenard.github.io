@@ -49,6 +49,27 @@ const worksObserver = new IntersectionObserver((event) => {
 })
 worksObserver.observe(document.getElementById("workslist"));
 
+
+const loadargs= new URLSearchParams(window.location.search);
+document.querySelectorAll("li.selfload").forEach((parent) => {
+    child = null;
+    if (loadargs.get("loadselfembed") == "f")
+    {
+        child = document.createElement("img");
+        child.src = "assets/images/websiteheader.png";
+        
+    }
+    else
+    {
+        child = document.createElement("iframe");
+        child.src = "index.html?loadselfembed=f";
+    }
+    child.height="1080"
+    child.width="1920"
+    parent.appendChild(child);
+    
+});
+
 document.getElementById("headerprofileimage").addEventListener("click", (event) => {
     
     if (!event.target.classList.contains("wiggle"))
@@ -58,4 +79,10 @@ document.getElementById("headerprofileimage").addEventListener("click", (event) 
             obj.classList.remove("wiggle")
         },700);
     }
+})
+
+document.querySelectorAll(".myworks > div > ul > li > img, video").forEach((item) => {
+    backgrounditem = item.cloneNode(true);
+    backgrounditem.classList.add("blurredbackground");
+    item.parentElement.appendChild(backgrounditem);
 })

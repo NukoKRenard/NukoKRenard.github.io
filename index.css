@@ -41,6 +41,7 @@
     100% {}
 }
 
+
 body {
     background: rgb(20,20,20);
     color: rgb(200,200,200);
@@ -90,7 +91,8 @@ body {
 }
 
 .navbar > ul > li {
-    font-size:100%;
+    position:relative; 
+
     display:inline-block;
     padding:1%;
 
@@ -100,6 +102,30 @@ body {
     border-left: 3px white solid;
 
     transition: 500ms;
+}
+
+.navbar > ul > li::after {
+    content:"";
+    
+    width:100%;
+    height:100%;
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+    translate:-50% -50%;
+
+    border: 5px solid rgb(200,100,50);
+    background:rgba(200,100,50,.5);
+
+    scale:0% 0%;
+
+    transition-duration: 500ms;
+}
+
+.navbar > ul > li:hover::after {
+    scale: 100% 100%;
 }
 
 .navbar > ul > li:hover {
@@ -131,14 +157,52 @@ header {
     border-bottom: 10px solid white;
 }
 
-header > img {
-    border-radius: 50%;
+@property --borderrot{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotateborder {
+    from {
+        --borderrot: 0deg;
+    }
+    to {
+        --borderrot:360deg;
+    }
+}
+
+header > div {
     width:30%;
     height:30%;
     margin-left:auto;
     margin-right:auto;
     display:block;
 }
+
+header > div > img {
+    border-radius: 50%;
+    width:100%;
+    height:100%;
+}
+
+.glowbackground::after {
+    border-radius: 50%;
+
+    content: "";
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:50%;
+    left:50%;
+    translate: -50% -50%;
+
+    background: conic-gradient(from var(--borderrot), rgb(200,100,50), white,rgb(200,100,50), white,rgb(200,100,50));
+
+    z-index: -1;
+    padding:5px;
+    animation: rotateborder forwards infinite 1s linear;
+  }
 
 .wiggle {
     animation-name:wiggle;
@@ -275,7 +339,7 @@ a:visited
 
 .myworks {
     width:auto;
-    height:800px;
+    height:1000px;
     padding:none;
     padding-bottom:10%;
     overflow-y:hidden;
@@ -301,31 +365,29 @@ a:visited
 
 .myworks > div > ul {
     width:auto;
-    overflow-y:hidden;
+    overflow-y:show;
     overflow-x:scroll;
     white-space: nowrap;
-    width: 70%;
+    width: 90%;
 }
 
 .myworks > div > ul > li {
+    position:relative;
     display:inline-block;
 
     height:500px;
     max-height:500px;
     min-width: 500px;
-
-    background:rgb(200,100,20);
     
 
     margin-left:50px;
     margin-right:50px;
 
     border-radius:2%;
-
-    filter: drop-shadow(-1cm 1cm 10px rgba(0,0,0,.3));
 }
 
-.myworks > div > ul > li > video, img, embed {
+.blurredbackground {
+    position:absolute;
     display:block;
 
     margin-left:auto;
@@ -333,8 +395,25 @@ a:visited
 
     width: auto;
     height:100%;
+    top:50%;
+    left:50%;
+    translate: -50% -50%;
 
-    background:rgb(200,100,20);
+    scale: 101%;
+    z-index: -1;
+
+    opacity: 40%;
+    filter:blur(30px);
+}
+
+.myworks > div > ul > li > video, img {
+    display:block;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    width: auto;
+    height:100%;
 }
 
 .myworks > div > ul > li > iframe {
@@ -364,6 +443,7 @@ a:visited
     transition-duration: 300ms;
 
     border-radius: 5%;
+    z-index: 10;
 }
 
 .imagedesc > p
