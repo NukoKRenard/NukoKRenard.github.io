@@ -1,12 +1,19 @@
+/*
+ * Skyler O'Bonsawin
+ * January 11, 2025
+ * This document contains a number of animation triggers for the portfolio website.
+ */
+
+//Code for the page scroll progress indicator.
 document.addEventListener("scroll",() => {
     document.getElementById("pagescrollprogress").style.width = String((window.scrollY/(document.body.offsetHeight-window.innerHeight))*100)+"%";
 });
 
+//when items with the hiddenOpac class become visible this block will give them the class of hiddenOpacIn causing their blur and opacity transition to become visible.
 const opacObserver = new IntersectionObserver((event) => {
     event.forEach((option) => {
         if (option.isIntersecting)
         {
-            console.log(option)
             option.target.classList.add("hiddenOpacIn");
         }
         else
@@ -14,66 +21,40 @@ const opacObserver = new IntersectionObserver((event) => {
             option.target.classList.remove("hiddenOpacIn");
         }
     })
-},{root:document,rootMargin:"0px",threshold:.5});
+},{root:document,rootMargin:"0px",threshold:0.3});
 document.querySelectorAll(".hiddenOpac").forEach((obj) => {
     opacObserver.observe(obj);
 });
 
-const worksObserver = new IntersectionObserver((event) => {
+//Since when we translate the objects it goes out of the window, we have to use a parent to detect for any fade ins that involve translation.
+//when children of items with the a hidden transform class become visible this block will give them the class of hiddenTransformIn causing them to slide in from the right. It is also staggered for lists.
+const transformObserver = new IntersectionObserver((event) => {
     event.forEach((option) => {
         if (option.isIntersecting)
         {
-            waittime = 500
+            waittime = 0
             for (const child of option.target.children)
             {
                 window.setTimeout((obj=child) => {
-                    child.classList.add("hiddenRightIn");
+                    child.classList.add("hiddenTransformIn");
                 },waittime)
                 waittime+=100;
             }
-
-            window.setTimeout(() => {
-                document.getElementById("worksdiv").querySelectorAll(".leftbutton, .rightbutton").forEach((item) => {
-                    item.classList.add("hintedbutton");
-                });
-            },2000);
         }
         else
         {
             for (const child of option.target.children)
                 {
-                    child.classList.remove("hiddenRightIn");
+                    child.classList.remove("hiddenTransformIn");
                 } 
         }
     })
 })
-worksObserver.observe(document.getElementById("workslist"));
+document.querySelectorAll(".hiddenRight, .hiddenLeft, .hiddenDown").forEach((obj) => {
+    transformObserver.observe(obj);
+},{root:document,rootMargin:"0px",threshold:0.9});
 
-
-const loadargs= new URLSearchParams(window.location.search);
-document.querySelectorAll("li.selfload").forEach((parent) => {
-    child = null;
-    if (loadargs.get("loadselfembed") == "f")
-    {
-        child = document.createElement("img");
-        child.src = "assets/images/websiteheader.png";
-        
-    }
-    else
-    {
-        child = document.createElement("iframe");
-        child.src = "index.html?loadselfembed=f";
-        childbackground = document.createElement("img");
-        childbackground.src = "assets/images/websiteheader.png";
-        childbackground.classList.add("blurredbackground");
-        parent.appendChild(childbackground);
-    }
-    child.height="1080"
-    child.width="1920"
-    parent.appendChild(child);
-    
-});
-
+//A fun easter eg which wiggles the profile picture on the header when clicked.
 document.getElementById("headerprofileimage").addEventListener("click", (event) => {
     
     if (!event.target.classList.contains("wiggle"))
@@ -85,6 +66,7 @@ document.getElementById("headerprofileimage").addEventListener("click", (event) 
     }
 })
 
+//Clones and places a blurred scaled up version of all of the images and videos inside of the My Works div. This is to make a fun responsive glow effect.
 document.querySelectorAll(".myworks > div > ul > li > img, video").forEach((item) => {
     backgrounditem = item.cloneNode(true);
     backgrounditem.classList.add("blurredbackground");

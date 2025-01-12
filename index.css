@@ -1,70 +1,68 @@
-@keyframes wigglescale {
-    20%
-    {
-        transform: scale(100%);
-        background-color: white;
-    }
-    40%
-    {
-        transform: scale(125%) rotate(-20deg);
-        background-color: white;
-    }
-    60%
-    {
-        transform: scale(150%) rotate(30deg);
-        background-color: white;
-    }
-    80%
-    {
-        transform: scale(125%) rotate(-20deg);
-        background-color: white;
-    }
-    100% {}
-}
-@keyframes wiggle {
-    20%
-    {
-        transform: rotate(5deg);
-    }
-    40%
-    {
-        transform: rotate(-20deg);
-    }
-    60%
-    {
-        transform: rotate(30deg);
-    }
-    80%
-    {
-        transform: rotate(-20deg);
-    }
-    100% {}
+/*
+ * Skyler O'Bonsawin
+ * January 11, 2025
+ * This is the main style for the website.
+*/
+
+:root {
+    --color-background-primary: rgb(50, 50, 50);
+    --color-background-secondary: rgb(20,20,20);
+
+    --color-primary: rgb(20,150,250);
+    --glass-primary: rgba(20,150,250,.5);
+
+    --color-secondary: rgb(0,10,20);
+    --glass-secondary: rgba(0,10,20,.5);
+    
+    --color-highlight: rgb(220,220,255);
+    --glass-highlight: rgba(220,220,255,.5);
+
+    --color-content-header: rgb(255,255,255);
+    --glass-content-header: rgba(255,255,255,.7);
+    --color-content-text: rgb(255,255,255);
+
+    --error: rgb(255,0,255); /*NOTE: the user should **NEVER EVER SEE THIS COLOUR** if the user sees this colour it means something has gone wrong with the website layout and something is showing that shouldn't.*/
 }
 
+html, body {
+    margin:0;
+    padding:0;
+
+    box-sizing: border-box;
+
+    background: var(--error);
+}
 
 body {
-    background: rgb(20,20,20);
-    color: rgb(200,200,200);
+    color: var(--color-content-text);
+
     padding:none;
-    margin:none;
-    width:auto;
 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/*This is the animation that plays when you select an item on the navbar.*/
+@keyframes highlightelement {
+    100% {
+        background: var(--color-primary);
+    }
+}
+.highlightelement {
+    animation: .5s both alternate highlightelement;
+    animation-iteration-count: 6;
+}
+
+/*The following classes are for the navbar at the top of the screen*/
 .navbar {
     position:sticky;
     z-index: 1000;
     top: 0px;
     height:100px;
-    width:auto;
     margin:none;
     padding:5px;
-    background-color: rgb(0,0,0);
+    background: var(--color-background-secondary);
 
     font-family: 'Courier New', Courier, monospace;
-
-    overflow:hidden;
 }
 
 .navbar > .nameandpic {
@@ -73,8 +71,6 @@ body {
     top:30px;
     height:auto;
 }
-
-
 
 .navbar > .nameandpic > h1{
     width:50px;
@@ -98,8 +94,8 @@ body {
 
     cursor:pointer;
 
-    color:white;
-    border-left: 3px white solid;
+    color:var(--color-content-header);
+    border-left: 3px var(--color-content-header) solid;
 
     transition: 500ms;
 }
@@ -115,9 +111,8 @@ body {
     top:50%;
     left:50%;
     translate:-50% -50%;
-
-    border: 5px solid rgb(200,100,50);
-    background:rgba(200,100,50,.5);
+    border: 5px var(--color-primary) solid;
+    background-color: var(--glass-primary);
 
     scale:0% 0%;
 
@@ -132,42 +127,51 @@ body {
     display:inline-block;
     padding:1%;
 
-    color:rgb(200,100,50);
-    border-left: 3px rgb(200,100,50) solid ;
+    color:var(--color-primary);
+    border-left: 3px var(--color-primary) solid ;
 }
 
+/*This is the line that shows how far through the page the user has scrolled*/
 #pagescrollprogress {
     height:10px;
-    background: rgb(100,100,100);
-    width:1px;
+    width:0px;
+
+    padding:none;
+    margin:none;
+
+    background-color: var(--glass-primary);
+
 }
 
+/*The following classes are for the header*/
 header {
+    position:relative;
+
     background-size:cover;
     margin:none;
     border:none;
     content:50%;
     padding:5%;
-    width:1080;
-    height:720;
     overflow:hidden;
 
-    background: url("assets/images/House.png");
+    background: var(--color-secondary);
 
-    border-bottom: 10px solid white;
+    border-bottom: 10px solid var(--color-primary);
 }
 
+/*We use the property tag to define a variable here so that it can be animated by a keygrame*/
 @property --borderrot{
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
 
+/*This is the animation of the border that you see on the avitar image in the header*/
 @keyframes rotateborder {
-    from {
+    0% {
         --borderrot: 0deg;
     }
-    to {
+    100% {
         --borderrot:360deg;
     }
 }
@@ -180,13 +184,41 @@ header > div {
     display:block;
 }
 
+/*This is a wiggle animation that the avitar image does when clicked.*/
+@keyframes wiggle {
+    20%
+    {
+        transform: rotate(5deg);
+    }
+    40%
+    {
+        transform: rotate(-20deg);
+    }
+    60%
+    {
+        transform: rotate(30deg);
+    }
+    80%
+    {
+        transform: rotate(-20deg);
+    }
+    100% {}
+}
+.wiggle {
+    animation-name:wiggle;
+    animation-duration: 700ms;
+    animation-timing-function: cubic-bezier(.8,.8,1,1);
+    animation-fill-mode: forwards;
+}
+
+
 header > div > img {
     border-radius: 50%;
     width:100%;
     height:100%;
 }
 
-.glowbackground::after {
+.glowbackground::after, .glowbackground::before {
     border-radius: 50%;
 
     content: "";
@@ -197,57 +229,64 @@ header > div > img {
     left:50%;
     translate: -50% -50%;
 
-    background: conic-gradient(from var(--borderrot), rgb(200,100,50), white,rgb(200,100,50), white,rgb(200,100,50));
+    background: conic-gradient(from var(--borderrot), var(--color-primary), var(--color-secondary),var(--color-primary),var(--color-secondary),var(--color-primary));
 
     z-index: -1;
     padding:5px;
-    animation: rotateborder forwards infinite 1s linear;
-  }
+    animation: rotateborder forwards infinite 5s linear;
+}
 
-.wiggle {
-    animation-name:wiggle;
-    animation-duration: 700ms;
-    animation-timing-function: cubic-bezier(.8,.8,1,1);
-    animation-fill-mode: forwards;
+.glowbackground::before {
+    scale:130%;
+    opacity: 50%;
+    filter:blur(100px);
 }
 
 header > h1 {
     text-align: center;
     font-size:600%;
     font-weight: bolder;
-    color:rgba(255,255,255,.7);
+
+    color:var(--glass-content-header);
 }
 
+/*This down arrow is made visible if users get stuck on the header to show they can scroll*/
 .downarrow {
     width:50px;
     height:50px;
     transform:rotate(45deg) scale(1.5,1.5) translate(-2cm,-2cm);
 
-    border-bottom: 10px solid rgba(200,200,200,.3);
-    border-right: 10px solid rgba(200,200,200,.3);
+    border-bottom: 10px solid var(--glass-highlight);
+    border-right: 10px solid var(--glass-highlight);
     margin-left:auto;
     margin-right:auto;
     opacity:0%;
 }
 
-.uparrow {
-    position: absolute;
-    width:30px;
-    height:30px;
-    transform:rotate(45deg);
-    top:50px;
-    right:50px;
+/*The following classes are for the About Me section.*/
 
-    border-top: 10px solid rgba(255,255,255,.4);
-    border-left: 10px solid rgba(255,255,255,.4);
-    margin-left:auto;
-    margin-right:auto;
-    transition-duration:500ms;
+a {
+    font-display: bold;
+    color:var(--color-content-primary);
 }
 
-.imagedesc:hover > .uparrow {
-    opacity:0%;
+a:visited
+{
+    color:var(--color-content-text);
+    font-display: italic;
 }
+
+.aboutme {
+    background:var(--color-background-primary);
+    font-size:130%;
+    padding:5%;
+}
+
+.aboutme > h1 {
+    text-align: center;
+}
+
+/*The following classes are for the My Works section.*/
 .rightarrow {
     width:50px;
     height:50px;
@@ -255,8 +294,8 @@ header > h1 {
 
     margin:auto;
 
-    border-top: 10px solid rgb(200,200,200);
-    border-right: 10px solid rgb(200,200,200);
+    border-top: 10px solid var(--glass-highlight);
+    border-right: 10px solid var(--glass-highlight);
 }
 
 .leftarrow {
@@ -266,9 +305,35 @@ header > h1 {
 
     margin:auto;
 
-    border-bottom: 10px solid rgb(200,200,200);
-    border-left: 10px solid rgb(200,200,200);
+    border-bottom: 10px solid var(--glass-highlight);
+    border-left: 10px solid var(--glass-highlight);
 }
+
+/*This is an animation that the buttons do when they are first shown on the screen indicating that the My Works page can be navigated horizontally.*/
+@keyframes wigglescale {
+    20%
+    {
+        transform: scale(100%);
+        background-color: var(--color-highlight);
+    }
+    40%
+    {
+        transform: scale(125%) rotate(-20deg);
+        background-color: var(--color-highlight);
+    }
+    60%
+    {
+        transform: scale(150%) rotate(30deg);
+        background-color: var(--color-highlight);
+    }
+    80%
+    {
+        transform: scale(125%) rotate(-20deg);
+        background-color: var(--color-highlight);
+    }
+    100% {}
+}
+
 
 .leftbutton, .rightbutton
 {
@@ -277,15 +342,14 @@ header > h1 {
     width:120px;
     height:120px;
     font-size:50px;;
-    background:rgb(200,100,20);
+    background:var(--color-primary);
     text-align: center;
     vertical-align: center;
-    color:rgb(255,255,255);
+    color:var(--color-content-text);
 
-    border:5px solid white;
     border-radius: 50%;
 
-    transition-duration: 400ms;
+    transition-duration: 500ms;
     z-index: 10;
 }
 
@@ -297,7 +361,8 @@ header > h1 {
 }
 
 .leftbutton:hover, .rightbutton:hover {
-    background-color: rgb(150,150,150);
+    background-color: var(--color-highlight);
+    scale:105%;
 }
 
 .leftbutton
@@ -316,27 +381,6 @@ header > h1 {
     transition-duration: 500ms;
 }
 
-a {
-    font-display: bold;
-    color:rgb(200,100,50);
-}
-
-a:visited
-{
-    color:rgb(200,200,200);
-    font-display: italic;
-}
-
-.aboutme {
-    background:rgba(50,50,50,.9);
-    font-size:130%;
-    padding:5%;
-}
-
-.aboutme > h1 {
-    text-align: center;
-}
-
 .myworks {
     width:auto;
     height:1000px;
@@ -345,8 +389,10 @@ a:visited
     overflow-y:hidden;
     overflow-x:hidden;
 
-    border-top: solid orange 10px;
-    border-bottom: solid orange 10px;
+    background:var(--color-background-secondary);
+
+    border-top: solid var(--color-secondary) 10px;
+    border-bottom: solid var(--color-secondary) 10px;
 }
 
 .myworks > h1 {
@@ -368,7 +414,12 @@ a:visited
     overflow-y:show;
     overflow-x:scroll;
     white-space: nowrap;
-    width: 90%;
+    width: 50%;
+
+    padding-inline: 25%;
+
+    border-top: 3px solid var(--color-highlight);
+    border-bottom: 3px solid var(--color-highlight);
 }
 
 .myworks > div > ul > li {
@@ -402,8 +453,8 @@ a:visited
     scale: 101%;
     z-index: -1;
 
-    opacity: 40%;
-    filter:blur(30px);
+    opacity: 50%;
+    filter:blur(50px);
 }
 
 .myworks > div > ul > li > video, img {
@@ -422,17 +473,18 @@ a:visited
     position: absolute;
 }
 
+/*This is a classed used for the website iframe as it needs to be positioned absolutely*/
 .fullsizeworkbackground {
     width:889px
 }
 
 .imagedesc {
     position: absolute;
-    background: rgb(50,50,50,.3);
+    background: var(--glass-secondary);
 
     bottom:1px;
-    left:0px;
-    border-left: 5px solid white;
+    left:10px;
+    border-left: 5px solid var(--color-primary);
 
     width:450px;
     height:100px;
@@ -459,17 +511,35 @@ a:visited
 
 .imagedesc:hover {
     height:450px;
-    background: rgb(50,50,50,.9);
+    background: var(--color-secondary);
     filter:blur(0px);
 }
+.imagedesc:hover > .uparrow {
+    opacity:0%;
+}
+.uparrow {
+    position: absolute;
+    width:30px;
+    height:30px;
+    transform:rotate(45deg);
+    top:50px;
+    right:50px;
+
+    border-top: 10px solid var(--color-highlight);
+    border-left: 10px solid var(--color-highlight);
+    margin-left:auto;
+    margin-right:auto;
+    transition-duration:500ms;
+}
+/*End of my works section.*/
 
 .awards {
-    background: rgb(10,10,10);
+    background: var(--color-background-primary);
     padding:5%;
 }
 
 .experience {
-    background:rgb(30,30,30);
+    background: var(--color-background-secondary);
     padding:5%;
 }
 
@@ -479,9 +549,11 @@ ul > li {
 }
 
 .contactinfo {
+    background: var(--color-secondary);
     padding:5%;
 }
 
+/*Visibility classes for animating on scroll.*/
 .hiddenOpac {
     opacity:0%;
     filter:blur(100px);
@@ -492,10 +564,26 @@ ul > li {
     filter:blur(0px);
 }
 
-.hiddenRight {
-    transform:translate(500cm,0);
-    transition-duration: 1s;
+.hiddenRight, .hiddenLeft, .hiddenDown {
+    overflow: hidden;
 }
-.hiddenRightIn {
+
+.hiddenRight > *, .hiddenLeft > *, .hiddenDown > * {
+    transition-duration: 1s;
+    opacity: 0%;
+}
+
+.hiddenRight > * {
+    transform:translate(100cm,0);
+}
+.hiddenLeft > * {
+    transform:translate(-100cm,0);
+}
+.hiddenDown > * {
+    transform:translate(0,100cm);
+}
+.hiddenTransformIn {
+    opacity:100%;
     transform:translate(0,0);
 }
+

@@ -1,31 +1,45 @@
+<!--
+Skyler O'Bonsawin
+January 11, 2025
+This is the main and as of right now only page in the portfolio website.
+-->
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="NukoRenard.png">
-        <title>Skyler O'Bonsawin</title>
+        <!--Linking and metadata-->
         <link rel="stylesheet" href="index.css"></link>
         <script src="scripts/anim.js" defer></script>
-        <script src="scripts/hints.js" defer></script>
+        <script src="scripts/handler.js" defer></script>
         <script src="scripts/func.js" defer></script>
+        <meta charset="UTF-8">
+
+        <link rel="icon" href="assets/images/icon.png">
+        <title>Skyler O'Bonsawin</title>
     </head>
     <body>
+
+        <!--This is the navbar at the top of the site-->
         <div class="navbar" id="navbar">
             <ul>
-                <li onclick="document.location.href='#works'">Works</li>
-                <li onclick="document.location.href='#awards'">Achievements</li>
-                <li onclick="document.location.href='#experience'">Experience</li>
-                <li onclick="document.location.href='#contactinfo'">Contact Information</li>
+                <li onclick="document.location.href = '#works'">Works</li>
+                <li onclick="goToID('awards')">Achievements</li>
+                <li onclick="goToID('experience')">Experience</li>
+                <li onclick="goToID('contactinfo')">Contact Information</li>
             </ul>
             <div class="nameandpic">
                 <h1>Skyler O'Bonsawin</h1>
             </div>
             <div id="pagescrollprogress"></div>
         </div>
+
+        <!--Header including my name and avitar image-->
         <header>
             <div class="glowbackground hiddenOpac"><img id="headerprofileimage" src="assets/images/NukoRenard.png"></div>
             <h1 id="headername" class="hiddenOpac">Skyler O'Bonsawin</h1>
             <div class="downarrow" id="headerscrollarrow"></div>
         </header>
+
+        <!--About me section-->
         <div class="aboutme" id="aboutme">
             <h1 class="hiddenOpac" id="aboutmeheader">About Me:</h1>
             <p class="hiddenOpac" id="aboutmep">
@@ -38,12 +52,14 @@
                 to supervise and lead a team.
             </p>
         </div>
+
+        <!--My works section-->
         <div class="myworks" id="works">
             <h1 id="workslisttitle" class="hiddenOpac">My Works:</h1>
                 <div id="worksdiv" class="hiddenOpac">
                 <button onclick="scrollWorks(-500)" id="worksbuttonl" class="leftbutton"><div class="leftarrow"></div></button>
-                <ul id="workslist">
-                    <li class="hiddenRight">
+                <ul id="workslist" class="hiddenRight">
+                    <li>
                         <img src="assets/images/AvaxDesign.png">
                         <div class="imagedesc">
                             <h1>Avax Race</h1><div class="uparrow"></div>
@@ -55,14 +71,14 @@
                             </p>
                         </div>
                     </li>
-                    <li class="hiddenRight">
+                    <li>
                         <img src="assets/images/tx01alienworld.png">
                         <div class="imagedesc">
                             <h1>Alien World</h1><div class="uparrow"></div>
                             <p>This is a scene of a little alien world I drew.</p>
                         </div>
                     </li>
-                    <li class="hiddenRight">
+                    <li>
                         <video autoplay muted loop controlls="false"><source src="assets/videos/FractalShader.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
                             <h1>Fractal</h1><div class="uparrow"></div>
@@ -72,7 +88,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="hiddenRight">
+                    <li>
                         <video autoplay muted loop controlls="false"><source src="assets/videos/RayMarchedBlobs.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
                             <h1>Blobs</h1><div class="uparrow"></div>
@@ -84,7 +100,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="hiddenRight">
+                    <li>
                         <video autoplay muted loop controlls="false"><source src="assets/videos/SpaceGame.mp4" type="video/mp4"/></video>
                         <div class="imagedesc">
                             <h1>Space Game</h1><div class="uparrow"></div>
@@ -96,7 +112,7 @@
                         </div>
                         
                     </li>
-                    <li class="hiddenRight">
+                    <li>
                         <img src="assets/images/RafflePoster.png">
                         <div class="imagedesc">
                             <h1>Raffle Poster</h1><div class="uparrow"></div>
@@ -105,7 +121,7 @@
                             </p>
                         </div>
                     </li>
-                    <li class="fullsizeworkbackground hiddenRight selfload">
+                    <li class="fullsizeworkbackground selfload">
                         <div class="imagedesc">
                             <h1>This Website</h1><div class="uparrow"></div>
                             <p>
@@ -118,9 +134,11 @@
                 <button onclick="scrollWorks(500)"  id="worksbuttonr" class="rightbutton"><div class="rightarrow"></div></button>
                 </div>
             </div>
-        <div class="awards hiddenOpac" id="awards">
-            <h1>Awards:</h1>
-            <ul>
+
+        <!--Awards section-->
+        <div class="awards" id="awards">
+            <h1 class="hiddenOpac">Awards:</h1>
+            <ul class="hiddenLeft">
                 <li>Most improved instructor (Air Cadets) 2024</li>
                 <li>Honors grade 9, 10, and 11</li>
                 <li>Highest achievement award, Grade 10 introduction to computer science</li>
@@ -128,9 +146,11 @@
                 <li>Flag party commander</li>
             </ul>
         </div>
-        <div class="experience hiddenOpac" id="experience">
-            <h1>Skills and Experience:</h1>
-            <ul>
+
+        <!--Experience section-->
+        <div class="experience" id="experience">
+            <h1 class="hiddenOpac">Skills and Experience:</h1>
+            <ul class="hiddenRight">
                 <li>Experience programming in Python, Java, C, C++, GLSL, GLES, Javascript, HTML, CSS</li>
                 <li>Experience leading and mentoring team members</li>
                 <li>Experience organizing and staffing events</li>
@@ -138,11 +158,14 @@
                 <li>Some 3D modeling experience</li>
             </ul>
         </div>
-        <div class="contactinfo hiddenOpac" id="contactinfo">
-            <h1>Contact Information:</h1>
-        
-            <h3>Phone Number: 437-446-1140</h3>
-            <h3>Email: skeanobo@gmail.com (preferred)</h3>
+
+        <!--Contact info section-->
+        <div class="contactinfo" id="contactinfo">
+            <h1 class="hiddenOpac">Contact Information:</h1>
+            <div class="hiddenDown">
+                <h3>Phone Number: 437-446-1140</h3>
+                <h3>Email: skeanobo@gmail.com (preferred)</h3>
+            </div>
         </div>
     </body>
 </html>
