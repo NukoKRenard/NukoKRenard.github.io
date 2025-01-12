@@ -182,6 +182,8 @@ header > div {
     margin-left:auto;
     margin-right:auto;
     display:block;
+
+    z-index: 1000;
 }
 
 /*This is a wiggle animation that the avitar image does when clicked.*/
@@ -218,7 +220,7 @@ header > div > img {
     height:100%;
 }
 
-.glowbackground::after, .glowbackground::before {
+.glowbackground::after {
     border-radius: 50%;
 
     content: "";
@@ -234,12 +236,6 @@ header > div > img {
     z-index: -1;
     padding:5px;
     animation: rotateborder forwards infinite 5s linear;
-}
-
-.glowbackground::before {
-    scale:130%;
-    opacity: 50%;
-    filter:blur(100px);
 }
 
 header > h1 {
@@ -587,3 +583,101 @@ ul > li {
     transform:translate(0,0);
 }
 
+@keyframes trailstar0 {
+    0%{
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    100% {
+        translate: 5px 10px;
+        opacity: 0%;
+    }
+}
+@keyframes trailstar1 {
+    0%{
+        opacity: 0%;
+    }
+    20% {
+        opacity: 100%;
+    }
+    40%{
+        opacity: 20%;
+    }
+    60% {
+        opacity: 100%;
+    }
+    80%{
+        opacity: 20%;
+    }
+    100% {
+        translate:-20px 10px;
+        opacity: 0%;
+    }
+}
+@keyframes trailstar2 {
+    0%{
+        opacity: 0%;
+    }
+    10% {
+        opacity: 100%;
+    }
+    20% {
+        opacity: 20%;
+    }
+    30% {
+        opacity: 100%;
+    }
+    40%{
+        opacity: 20%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    60% {
+        opacity: 20%;
+    }
+    70% {
+        opacity: 100%;
+    }
+    80%{
+        opacity: 20%;
+    }
+    90% {
+        opacity: 100%;
+    }
+    100% {
+        translate:30px -10px;
+        opacity: 0%;
+    }
+}
+
+@keyframes fade {
+    0% {
+
+    }
+    100% {
+        filter:blur(10px);
+    }
+}
+
+.mousestartrail {
+    position:absolute;
+
+    width:20px;
+    height: 20px;
+
+    left:0px;
+    top:0px;
+
+    pointer-events: none;
+
+    background: url("assets/images/Star.png");
+    background-size:cover;
+
+    border-radius: 50%;
+    z-index: 1;
+
+    animation-fill-mode: forwards;
+}

@@ -72,3 +72,31 @@ document.querySelectorAll(".myworks > div > ul > li > img, video").forEach((item
     backgrounditem.classList.add("blurredbackground");
     item.parentElement.appendChild(backgrounditem);
 })
+
+const header = document.getElementById("header");
+lastmouseposstar = [0,0];
+header.addEventListener("mousemove", (event) => {
+    const x = event.clientX+window.scrollX;
+    const y = event.clientY-100+window.scrollY;
+        
+    const distancestar = Math.sqrt((x-lastmouseposstar[0])*(x-lastmouseposstar[0])+(y-lastmouseposstar[1])*(y-lastmouseposstar[1]));
+    if (distancestar > 20)
+    {
+        lastmouseposstar = [x,y];
+
+        const star = document.createElement("div");
+        star.classList.add("mousestartrail");
+        header.appendChild(star);
+
+        star.style.left = x+((Math.random()-.5)*100)+"px";
+        star.style.top = y-100+((Math.random()-.5)*100)+"px";
+
+        star.style.animationName = "trailstar"+Math.floor(Math.random()*2);
+        star.style.animationDuration = 1000+Math.floor(Math.random()*2000)+"ms";
+        star.style.scale = Math.floor(30+(Math.random()*70))+"%";
+
+        window.setTimeout(() => {
+            header.removeChild(star);
+        },3000);
+    }
+});
