@@ -220,7 +220,7 @@ header > div > img {
     height:100%;
 }
 
-.glowbackground::after {
+.glowbackground::after, .glowbackground::before {
     border-radius: 50%;
 
     content: "";
@@ -236,6 +236,10 @@ header > div > img {
     z-index: -1;
     padding:5px;
     animation: rotateborder forwards infinite 5s linear;
+}
+.glowbackground::before {
+    scale:110%;
+    filter:blur(70px);
 }
 
 header > h1 {
@@ -411,6 +415,8 @@ a:visited
     overflow-x:scroll;
     white-space: nowrap;
     width: 50%;
+
+    background-color: var(--color-secondary);
 
     padding-inline: 25%;
 
@@ -653,15 +659,6 @@ ul > li {
     }
 }
 
-@keyframes fade {
-    0% {
-
-    }
-    100% {
-        filter:blur(10px);
-    }
-}
-
 .mousestartrail {
     position:absolute;
 
@@ -678,6 +675,8 @@ ul > li {
 
     border-radius: 50%;
     z-index: 1;
+
+    mix-blend-mode: color-dodge;
 
     animation-fill-mode: forwards;
 }

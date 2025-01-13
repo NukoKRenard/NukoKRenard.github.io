@@ -73,6 +73,7 @@ document.querySelectorAll(".myworks > div > ul > li > img, video").forEach((item
     item.parentElement.appendChild(backgrounditem);
 })
 
+
 const header = document.getElementById("header");
 lastmouseposstar = [0,0];
 header.addEventListener("mousemove", (event) => {
@@ -80,7 +81,7 @@ header.addEventListener("mousemove", (event) => {
     const y = event.clientY-100+window.scrollY;
         
     const distancestar = Math.sqrt((x-lastmouseposstar[0])*(x-lastmouseposstar[0])+(y-lastmouseposstar[1])*(y-lastmouseposstar[1]));
-    if (distancestar > 20)
+    if (distancestar > 10)
     {
         lastmouseposstar = [x,y];
 
