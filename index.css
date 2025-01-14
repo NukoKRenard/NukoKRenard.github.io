@@ -182,8 +182,6 @@ header > div {
     margin-left:auto;
     margin-right:auto;
     display:block;
-
-    z-index: 1000;
 }
 
 /*This is a wiggle animation that the avitar image does when clicked.*/
@@ -674,7 +672,6 @@ ul > li {
     background-size:cover;
 
     border-radius: 50%;
-    z-index: 1;
 
     mix-blend-mode: color-dodge;
 

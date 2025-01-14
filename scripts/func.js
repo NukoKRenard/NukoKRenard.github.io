@@ -14,10 +14,14 @@ function scrollWorks(amount)
 function goToID(targetID) {
     document.location.href = "#"+targetID;
 
+    document.querySelectorAll(".highlightelement").forEach((item) => {
+        item.classList.remove("highlightelement");
+    })
+
     const target = document.getElementById(targetID);
     target.classList.add("highlightelement")
 
     window.setTimeout((object=target) => {
         target.classList.remove("highlightelement");
-    },5000);
+    },3000);
 }
