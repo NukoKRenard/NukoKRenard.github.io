@@ -54,6 +54,32 @@ document.querySelectorAll(".hiddenRight, .hiddenLeft, .hiddenDown").forEach((obj
     transformObserver.observe(obj);
 },{root:document,rootMargin:"0px",threshold:0.9});
 
+
+const faultyObserver = new IntersectionObserver((event) => {
+    event.forEach((option) => {
+        if (option.isIntersecting)
+        {
+
+            offinterval = 0
+            console.log("faultvisible");
+
+            for (i = 0; i < 10; i++)
+            {
+                offinterval += Math.random()*300;
+                oninterval = offinterval+Math.random()*300;
+
+                window.setTimeout(() => {option.target.classList.add("disabled")},offinterval);
+                window.setTimeout(() => {option.target.classList.remove("disabled")},oninterval);
+
+                console.log(offinterval);
+            }
+        }
+    })
+})
+document.querySelectorAll(".hiddenFault").forEach((obj) => {
+    faultyObserver.observe(obj);
+},{root:document,rootMargin:"0px",threshold:0.9});
+
 //A fun easter eg which wiggles the profile picture on the header when clicked.
 document.getElementById("headerprofileimage").addEventListener("click", (event) => {
     
