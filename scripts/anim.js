@@ -63,7 +63,7 @@ const faultyObserver = new IntersectionObserver((event) => {
             offinterval = 0
             console.log("faultvisible");
 
-            for (i = 0; i < 10; i++)
+            for (i = 0; i < 15; i++)
             {
                 offinterval += Math.random()*300;
                 oninterval = offinterval+Math.random()*300;
