@@ -285,26 +285,29 @@ a:visited
 }
 
 /*The following classes are for the My Works section.*/
-.rightarrow {
+.leftarrow, .rightarrow {
+    transition-duration: 500ms;
     width:50px;
     height:50px;
-    transform:rotate(45deg) translate(-15%,15%);
 
     margin:auto;
+}
+.rightarrow {
+    transform:rotate(45deg) translate(-15%,15%);
 
-    border-top: 10px solid var(--glass-highlight);
-    border-right: 10px solid var(--glass-highlight);
+    border-top: 10px solid var(--color-highlight);
+    border-right: 10px solid var(--color-highlight);
 }
 
 .leftarrow {
-    width:50px;
-    height:50px;
     transform:rotate(45deg) translate(15%,-15%);
 
-    margin:auto;
+    border-bottom: 10px solid var(--color-highlight);
+    border-left: 10px solid var(--color-highlight);
+}
 
-    border-bottom: 10px solid var(--glass-highlight);
-    border-left: 10px solid var(--glass-highlight);
+.leftbutton:hover > .leftarrow, .rightbutton:hover > .rightarrow {
+    border-color: var(--color-secondary);
 }
 
 /*This is an animation that the buttons do when they are first shown on the screen indicating that the My Works page can be navigated horizontally.*/
@@ -346,6 +349,8 @@ a:visited
     color:var(--color-content-text);
 
     border-radius: 50%;
+
+    border:none;
 
     transition-duration: 500ms;
     z-index: 10;
