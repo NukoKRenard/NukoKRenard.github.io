@@ -30,7 +30,7 @@ html, body {
 
     box-sizing: border-box;
 
-    background: var(--error);
+    background: var(--color-secondary);
 }
 
 body {
