@@ -61,7 +61,6 @@ const faultyObserver = new IntersectionObserver((event) => {
         {
 
             offinterval = 0
-            console.log("faultvisible");
 
             for (i = 0; i < 15; i++)
             {
@@ -70,8 +69,6 @@ const faultyObserver = new IntersectionObserver((event) => {
 
                 window.setTimeout(() => {option.target.classList.add("disabled")},offinterval);
                 window.setTimeout(() => {option.target.classList.remove("disabled")},oninterval);
-
-                console.log(offinterval);
             }
         }
     })
@@ -96,6 +93,7 @@ document.getElementById("headerprofileimage").addEventListener("click", (event) 
 document.querySelectorAll(".myworks > div > ul > li > img, video").forEach((item) => {
     backgrounditem = item.cloneNode(true);
     backgrounditem.classList.add("blurredbackground");
+    backgrounditem.muted = "muted";
     item.parentElement.appendChild(backgrounditem);
 })
 

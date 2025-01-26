@@ -21,6 +21,7 @@ const videoVisibilityPauser = new IntersectionObserver((event) => {
     event.forEach((option) => {
         if (option.isIntersecting)
         {
+            option.target.muted = "muted";
             option.target.querySelectorAll("video").forEach((video) => video.play());
         }
         else
@@ -29,7 +30,7 @@ const videoVisibilityPauser = new IntersectionObserver((event) => {
         }
     })
 },{root:document,rootMargin:"0px",threshold:.7});
-document.querySelectorAll("*").forEach((item) => {
+document.querySelectorAll("video").forEach((item) => {
     videoVisibilityPauser.observe(item);   
 });
 
